@@ -5,6 +5,7 @@
 In the project directory, you can run:
 
 <br>
+
   `npm install`
   <br>
   `npm start`
