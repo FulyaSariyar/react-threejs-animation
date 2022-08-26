@@ -2,8 +2,8 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useSnapshot } from 'valtio';
 
- const Cat = (state, ...rest) => {
-  //const snap = useSnapshot(state);
+ const Cat = ({state, ...rest}) => {
+  const snap = useSnapshot(state);
   const group = useRef();
   const { nodes, materials } = useGLTF("src/cat.glb")
   return (
