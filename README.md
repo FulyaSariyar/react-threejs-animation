@@ -6,6 +6,6 @@ In the project directory, you can run:
 
 <br>
 
-  `npm install 
+  `npm install <hr> 
   npm start`
   
