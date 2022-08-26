@@ -1,11 +1,13 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { useSnapshot } from 'valtio';
 
- const Cat = (props) => {
+ const Cat = (state, ...rest) => {
+  //const snap = useSnapshot(state);
   const group = useRef();
   const { nodes, materials } = useGLTF("src/cat.glb")
   return (
-    <group {...props} dispose={null}>
+    <group ref={group}{...rest} dispose={null}>
       <mesh geometry={nodes.Body.geometry} material={materials.skin} position={[0, 0, 0]} scale={1.42}>
         <mesh geometry={nodes.Arms.geometry} material={materials.skin} position={[0.89, -0.2, -0.12]} rotation={[0, 0, 0.19]} scale={0.34}>
           <mesh geometry={nodes.Claws_arms.geometry} material={materials.claws} position={[-0.04, -2.46, -0.48]} rotation={[0.05, 0.25, 0.06]} scale={0.28} />
@@ -22,7 +24,8 @@ import { useGLTF } from '@react-three/drei'
         <mesh geometry={nodes.Feet.geometry} material={materials.skin} position={[0.26, -1.5, -0.12]} rotation={[0, -1.19, 1.63]} scale={[0.24, 0.18, 0.24]}>
           <mesh geometry={nodes.Claws_feet.geometry} material={materials.claws} position={[-0.72, -2.4, -0.04]} rotation={[0.12, 0.19, -0.22]} scale={[0.36, 0.58, 0.32]} />
         </mesh>
-        <mesh geometry={nodes.Leaf_hat.geometry} material={materials['leaf | body']} position={[0, 0.92, 0]} scale={0.41}>
+        <mesh geometry={nodes.Leaf_hat.geometry} material={materials['leaf | body']} 
+        position={[0, 0.92, 0]} scale={0.41}>
           <mesh geometry={nodes.Stalk.geometry} material={materials['leaf | stalk']} position={[0.01, 0.41, -1.3]} rotation={[0.08, 0, 0]} scale={[0.15, 0.08, 0.59]} />
         </mesh>
         <mesh geometry={nodes.Nose.geometry} material={materials.nose} position={[0, 0.38, 0.8]} rotation={[1.01, 0, 0]} scale={[0.13, 0.12, 0.09]} />
