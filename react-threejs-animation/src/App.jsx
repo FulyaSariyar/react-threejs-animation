@@ -11,7 +11,7 @@ const state = proxy({
     belly: '#fff',
     'eyes | sclera': '#fff',
     'eyes | pupil': '#fff',
-    'leaf | body': '#0000ff',
+    'leaf | body': '#fff',
     'leaf | stalk': '#fff',
     nose: '#fff',
     whiskers: '#fff',
