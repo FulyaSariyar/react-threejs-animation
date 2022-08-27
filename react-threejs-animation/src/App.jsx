@@ -1,6 +1,6 @@
 import React, { Suspense, useState, useRef } from 'react'
 import {Canvas, useFrame} from '@react-three/fiber'
-import { Stars, OrbitControls, } from '@react-three/drei';
+import { Stars, ContactShadows,OrbitControls} from '@react-three/drei';
 import {proxy, useSnapshot} from 'valtio';
 import Cat from './components/Cat';
 import Palette from './components/Palette';
@@ -59,6 +59,19 @@ const App = () => {
      onPointerMissed={onPointerMissed}
      >
     </Cat>
+    <ContactShadows
+            rotation-x={Math.PI / 2}
+            position={[0, -2.4, 0]}
+            opacity={0.7}
+            width={10}
+            height={10}
+            blur={2}
+            far={3}
+            style={{
+              position: 'absolute',
+              zIndex: '2',
+            }}
+          />
     </Suspense>
     </Canvas>
     </>
