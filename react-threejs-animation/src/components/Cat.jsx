@@ -2,12 +2,18 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useSnapshot } from 'valtio';
 
- const Cat = ({state, ...rest}) => {
+ const Cat = ({state, onPointerOver,onPointerOut,onPointerDown,onPointerMissed,...rest}) => {
   const snap = useSnapshot(state);
   const group = useRef();
   const { nodes, materials } = useGLTF("src/cat.glb")
   return (
-    <group ref={group}{...rest} dispose={null}>
+    <group ref={group}{...rest}
+    dispose={null}
+    onPointerOver={onPointerOver}
+    onPointerOut={onPointerOut}
+    onPointerDown={onPointerDown}
+    onPointerMissed={onPointerMissed}
+    >
       <mesh geometry={nodes.Body.geometry} material={materials.skin}material-color ={snap.items.skin} position={[0, 0, 0]} scale={1.42}>
         <mesh geometry={nodes.Arms.geometry} material={materials.skin} material-color ={snap.items.skin}position={[0.89, -0.2, -0.12]} rotation={[0, 0, 0.19]} scale={0.34}>
           <mesh geometry={nodes.Claws_arms.geometry} material={materials.claws} material-color ={snap.items.claws} position={[-0.04, -2.46, -0.48]} rotation={[0.05, 0.25, 0.06]} scale={0.28} />

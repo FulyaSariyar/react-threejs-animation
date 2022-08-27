@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense, useState, useRef } from 'react'
 import {Canvas, useFrame} from '@react-three/fiber'
 import { Stars, OrbitControls, } from '@react-three/drei';
 import {proxy, useSnapshot} from 'valtio';
@@ -22,6 +22,24 @@ const state = proxy({
 
 const App = () => {
   const snap = useSnapshot(state);
+  const [hovered,set] =useState(null)
+
+  const onPointerOver = (event) => {
+       event.stopPropagation();
+       set(event.object.material.nama);
+  };
+  const onPointerOut = (event) => {
+    event.intersections.length == 0 && set(null);
+  };
+  const onPointerDown = (event) => {
+    event.stopPropagation();
+    state.current = event.object.material.name;
+  };
+  const onPointerMissed = (event) => {
+    state.current = null;
+  };
+
+
     return (
     <Canvas>
     <Stars></Stars>
@@ -29,7 +47,14 @@ const App = () => {
     <ambientLight></ambientLight>
     <pointLight position={[10,10,10]}></pointLight>
     <Suspense fallback ={null}>
-    <Cat state={state}></Cat>
+    <Cat
+     state={state}
+     onPointerOver={onPointerOver}
+     onPointerOut={onPointerOut}
+     onPointerDown={onPointerDown}
+     onPointerMissed={onPointerMissed}
+     >
+    </Cat>
     </Suspense>
     </Canvas>
   );
