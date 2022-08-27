@@ -3,6 +3,7 @@ import {Canvas, useFrame} from '@react-three/fiber'
 import { Stars, OrbitControls, } from '@react-three/drei';
 import {proxy, useSnapshot} from 'valtio';
 import Cat from './components/Cat';
+import Palette from './components/Palette';
 
 
 const state = proxy({
@@ -41,6 +42,9 @@ const App = () => {
 
 
     return (
+      
+    <>
+    <Palette state ={state}/>
     <Canvas>
     <Stars></Stars>
     <OrbitControls></OrbitControls>
@@ -57,6 +61,7 @@ const App = () => {
     </Cat>
     </Suspense>
     </Canvas>
+    </>
   );
 };
 export default App

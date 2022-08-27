@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useSnapshot } from 'valtio';
 
+
  const Cat = ({state, onPointerOver,onPointerOut,onPointerDown,onPointerMissed,...rest}) => {
   const snap = useSnapshot(state);
   const group = useRef();
