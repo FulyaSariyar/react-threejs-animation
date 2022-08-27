@@ -11,7 +11,7 @@
 <br>
 <br>
 <br>
-<br>
+
 ## Get Started
 In the project directory, you can run:
 
